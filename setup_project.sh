@@ -115,28 +115,53 @@ fi
 
 # 6. Crear carpetas en lib/
 echo "Creando la estructura de carpetas en lib/..."
-mkdir -p "$PROJECT_DIR/lib/core/theme"
-mkdir -p "$PROJECT_DIR/lib/core/utils"
-mkdir -p "$PROJECT_DIR/lib/core/models"
-mkdir -p "$PROJECT_DIR/lib/core/services"
+mkdir -p "$PROJECT_DIR/lib/app/src/core/services"
+mkdir -p "$PROJECT_DIR/lib/app/src/core/controllers"
+mkdir -p "$PROJECT_DIR/lib/app/src/core/widgets"
 
-mkdir -p "$PROJECT_DIR/lib/features/login/data"
-mkdir -p "$PROJECT_DIR/lib/features/login/domain"
-mkdir -p "$PROJECT_DIR/lib/features/login/presentation"
+mkdir -p "$PROJECT_DIR/lib/app/src/presentation/auth/presentation"
+echo "Creando auth_presentation.dart en lib/app/src/presentation/auth/..."
+cat <<EOL > "$PROJECT_DIR/lib/app/src/presentation/auth/auth_presentation.dart"
+// auth_presentation.dart
+class AuthPresentation {
+  // Implementación de la lógica de autenticación
+}
+EOL
 
-mkdir -p "$PROJECT_DIR/lib/features/dashboard/data"
-mkdir -p "$PROJECT_DIR/lib/features/dashboard/domain"
-mkdir -p "$PROJECT_DIR/lib/features/dashboard/presentation"
+cat <<EOL > "$PROJECT_DIR/lib/app/src/presentation/auth/presentation/login_presentation.dart"
+// login_presentation.dart
+class LoginPresentation {
+  // Implementación de la lógica de inicio de sesión
+}
+EOL
+
+mkdir -p "$PROJECT_DIR/lib/app/src/presentation/admin/presentation"
+echo "Creando admin_presentation.dart en lib/app/src/presentation/admin/..."
+cat <<EOL > "$PROJECT_DIR/lib/app/src/presentation/admin/admin_presentation.dart"
+// admin_presentation.dart
+class AdminPresentation {
+  // Implementación de la lógica de administración
+}
+EOL
+
 
 # Crear la carpeta para las imágenes
 mkdir -p "$PROJECT_DIR/lib/assets/images"
 
-# 7. Crear exports.dart en lib/app/
+# 7. Crear exports.dart en lib/app/ con las exportaciones por defecto
 echo "Creando exports.dart en lib/app/..."
 mkdir -p "$PROJECT_DIR/lib/app"
 cat <<EOL > "$PROJECT_DIR/lib/app/exports.dart"
-// Exportaciones de archivos Dart aquí
+// Exportaciones de archivos Dart
+export 'dart:io';
+export 'dart:convert';
+export 'package:flutter/material.dart';
+export 'package:flutter/foundation.dart';
+export 'package:flutter/services.dart' show rootBundle;
+
+// Exportaciones adicionales aquí (si es necesario)
 EOL
+
 
 # 8. Crear main.dart y config.dart
 echo "Creando main.dart y config.dart en lib/..."
